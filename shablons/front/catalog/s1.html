@@ -1,0 +1,92 @@
+<!-- photo s -->
+[%PAR/path/[front/path.html]%]
+
+ <h1>[%PAR/path/last/name%]</h1>
+
+
+<script type="text/javascript" src="/_js/func_validFields.js"></script>
+ <iframe name="subframe" src="/site_builder/blank.html" width="1" height="1" frameborder="0" border="0" style="border:none;padding:0;margin:0;"></iframe>
+[%calend1/include/[]%]
+
+
+
+  [%error/{
+
+
+    <br />
+    <div class="message_error">
+
+                [%error%]
+    </div>
+     <br />
+      <br />
+       <br />
+   }%]
+
+  [%success/{
+
+
+    <br />
+    <div class="message_error">
+     Вы записаны к врачу!
+     <br><a href="/print.php?visit=[%./success%]" target="_blank">Печать купона</a>
+    </div>
+     <br />
+      <br />
+       <br />
+   }%]
+
+[%sub/{
+[%user/{
+<form method="POST" action="/galery/s/[%./id%]" id="subm" onsubmit="return val(this,new Array([%././fieldsWithoutFail%]));" >
+}%]
+}%]
+[%sub/{
+  <input type = "hidden" value="[%timeofwork%]" name='timeofwork'>
+  [%about%]
+  <br>
+ <br>
+  <b>Время приема:</b>
+
+  <br>
+   [%sub1/{
+      [%name%]<br>
+        [%sub2/{
+          [%h_begin%]:[%min_begin%] - [%h_end%]:[%min_end%]  <br>
+         }%]
+
+   }%]
+   [%user/{
+
+
+
+     <b>Записаться на прием к этому врачу</b><br>
+     Дата:<span>*</span><input type="text" name='date' value="[%date%]" [%././calend1/{id="date[%n%]"}%] size="10" maxlength="10" class='textinput' />[%././calend1/button/[]%]<br>   <tr><td></td><td>[%././calend1/calend/[]%]</td>
+        </tr>
+     Время:<span>*</span>
+     Час<input type='text' name='hour' size=2 class="textinput" />Мин<input type='text' name='min'  size=2 class="textinput" /></br>
+     <label><span>*</span>Цель посещения</label>
+     <textarea name="reason" rows="10" cols=""></textarea><br />
+     <label>Кем направлен</label>
+     <textarea name="who" rows="10" cols=""></textarea><br />
+
+
+
+
+<br>
+<input type="submit" name="post" value="Записаца">
+</form>
+   }%]
+
+}%]
+
+Занятое время:<br>
+      [%zan/{
+        [%time%]<br>
+      }%]
+
+
+<br>
+
+<!-- photo s -->
+</form

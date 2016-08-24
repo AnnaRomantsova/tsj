@@ -1,0 +1,55 @@
+<!-- about -->
+<script>
+   function form_submit(name)
+   {
+      var f = document.forms[name];
+      f.submit();
+      return false;
+   }
+</script>
+
+    <div class='centerBlock' style="width: 670px; ">
+        [%path/last/name/{<p class='date'>[%./name%]</p><br/>}%]
+        [%mode/?
+             mode_edit {
+
+
+              <form action="/about/id/[%./id%]" method="post">
+                <input type="hidden" name = "edit_submit" value="1">
+                <input type="submit" value="" class="rd_bt" title="редактировать">
+                <br><br>
+                   <p> [%./about%]   </p>
+              </form>
+
+
+             }
+             mode_redact {
+              <script type="text/javascript" src="/ckeditor/ckeditor.js"></script>
+
+
+              <form  action="/about/id/[%./id%]" name="fsave" method="post">
+                <input type="hidden" name="save_submit" value="1">
+
+                   <textarea name="pre_about" id="pre_about" cols="45">[%./pre_about%] </textarea>
+                    <script type="text/javascript">
+                      CKEDITOR.replace('pre_about');
+                    </script>
+                   <div class='red_message' id="red_message">
+                    <br>
+                    *Ваши изменения отобразятся на сайте после проверки администратором
+                    <br>
+                   </div>
+                   <div class="vhod">
+                          <div class="but">  <a href='#' class='greenButtom' onclick="form_submit('fsave')">Сохранить</a></div>
+                          <div class="but"><a href='/about' class='greenButtom' >Отмена</a> </div>
+                   </div>
+              </form>
+
+             }
+             mode_show {
+               [%./about%]
+             }
+        %]
+     </div>
+<!-- /about -->
+

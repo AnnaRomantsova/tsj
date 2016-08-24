@@ -1,0 +1,42 @@
+   <div class="zakupki_links" style="width: 500px; ">
+
+      [%menu/{
+             [%T/?
+                A  {  <a href="/[%./href%]" class='item[%./num%]'>[%./name%]</a> }
+                S  {  [%./name%]}
+                SA {  <a href="/[%./href%]" style="color: black">[%./name%]</a>}
+             %]
+      }%]
+
+   </div>
+
+ [%vendor/{
+        <div class='newsBlock' style="margin: 20px 0 7px 0;">
+            <div class='bodyNews'>
+
+                <div class="zak_name">[%name%]</div>  <br>
+
+                [%image1/{<span style="float:right;"><img class='img'  src="[%src%]"  height="80" alt="[%./alt1%]" /></span>}%]
+                <p class='input'><u>Вид деятельности:</u> [%act_category%]</p>
+                <p><u>Город:</u> [%city%]</p>
+                [%link/{<p class='input'><u>Сайт:</u> <a href="[%./link%]">[%./link%]</a></p>}%]
+                [%fio/{          <p class='input'><u>Контактное лицо:</u> [%./fio%]</p>}%]
+                [%tel/{          <p class='input'><u>Контактный телефон:</u> [%./tel%]</p>}%]
+                [%adress/{       <p class='input'><u>Адрес:</u> [%./adress%]</p>}%]
+                [%inn/{          <p class='input'><u>ИНН организации:</u> [%./inn%]</p>}%]
+                <p class='input'><u>Эл. почта:</u> [%email%]</p>
+                <p class='input'><u>Дата регистрации на сайте:</u> [%date%]</p>
+
+
+                [%about/{<p class='input'><u>Информация:</u> [%./about%]</p>}%]
+
+
+            </div>
+            <p class='linkNews'><br>
+                 <a href="/zakupki/vendors/1" class='linkvendorBg' ></a>
+                 <span class='typevisible'>
+                      <span class='visible'>Просмотров: [%watch%]&nbsp;&nbsp;</span>
+                 </span>
+            </p>
+   </div>
+}%]

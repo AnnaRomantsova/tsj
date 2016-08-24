@@ -1,0 +1,52 @@
+<!-- law ITEM -->
+ <script>
+   function form_submit(name)
+   {
+      var f = document.forms[name];
+      f.submit();
+      return false;
+   }
+
+</script>
+
+
+ <form method="post" action="/opros/add/1" name="save" id="save">
+
+ <input type="hidden" name="save" value="1">
+
+ <div class='newsBlock' id = 'div[%id%]' style="width:447px;"><div class='hvost'></div>
+       <div class='bodyNews' id="[%id%]">
+               <td> <p class='input'>Заголовок опроса<br><input name = "zagol" class='w320'  type='text' /> </p> </td>
+
+              <table width=100%>
+                      <tr>
+                           <td> <p class='input'>Вариант ответа<br><input name = "_otvet[]" class='w320' type='text' /> </p> </td>
+                       </tr>
+                       <tr>
+                           <td> <p class='input'>Вариант ответа<br><input name = "_otvet[]" class='w320' type='text' /> </p> </td>
+                       </tr>
+                       <tr>
+                           <td> <p class='input'>Вариант ответа<br><input name = "_otvet[]" class='w320' type='text' /> </p> </td>
+                       </tr>
+                       <tr>
+                           <td> <p class='input'>Вариант ответа<br><input name = "_otvet[]" class='w320' type='text' /> </p> </td>
+                       </tr>
+                       <tr>
+                           <td> <p class='input'>Вариант ответа<br><input name = "_otvet[]" class='w320' type='text' /> </p> </td>
+                       </tr>
+               </table>
+       </div>
+       <p class='linkNews'>
+               <div class="but">  <a href='#' class='greenButtom' onclick="form_submit('save')">Сохранить</a></div>
+               <div class="but"> <a href='/opros' class='greenButtom' >Отмена</a> </div>
+
+
+       </p>
+ </div>
+
+  </form>
+
+
+
+
+<!-- /law ITEM -->

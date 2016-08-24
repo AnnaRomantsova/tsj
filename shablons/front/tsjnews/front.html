@@ -1,0 +1,283 @@
+<!-- NEWS -->
+<script>
+  function news_submit()  {
+  var el = document.getElementById('from');
+       //alert(el.value);
+       el.value = parseInt(el.value) +1;
+      // alert(el.value);
+       $('#form_news').submit();
+
+  }
+
+   function show_form(name)  {
+       var div = document.getElementById(name);
+       div.style.display = 'block';
+   }
+
+   function hide_form(name)  {
+       var div = document.getElementById(name);
+       div.style.display = 'none';
+   }
+
+   function form_submit(id,val_name,formname)  {
+         var elementi = document.getElementsByName(val_name);
+         var length = elementi.length;
+         for (var i = 0; i < length; i++) {
+             elementi[i].value= id;
+         }
+
+         var f = document.forms[formname];
+         //alert(el.value);
+         f.submit();
+   }
+
+ $(document).ready(function(){
+    var options = {
+       target: '#allnews',
+       beforeSubmit: showRequest, // функция, вызываемая перед передачей
+       success: showResponse, // функция, вызываемая при получении ответа
+       timeout: 3000 // тайм-аут
+    };
+
+    $('#form_news').submit(function() {
+       $(this).ajaxSubmit(options);
+       return false;
+    });
+ });
+
+     // вызов перед передачей данных
+    function showRequest(formData, jqForm, options) {
+       var queryString = $.param(formData);
+       //alert($('#from').value);
+       //alert('Вот что мы передаем: \n\n' + queryString);
+    }
+
+    // вызов после получения ответа
+    function showResponse(responseText, statusText)  {
+      // hide_form('new_group');
+      if (responseText.indexOf('theend')>=0) {
+    //        alert("3");
+            document.getElementById('escho').style.visible ='none' ;
+            document.getElementById('escho').style.visibility='hidden' ;
+      };
+      //alert('Статус ответа сервера: ' + statusText + '\n\nТекст ответа сервера: \n' + responseText +  '\n\nЦелевой элемент div обновиться этим текстом.');
+    }
+</script>
+
+
+
+
+
+
+[%mode/?
+       mode_edit {
+       <div class='centerBlock' style="width: 670px; ">
+         <p class='date'>Новости и события</p><br/>
+         <div class="but"><a href="#" onclick="form_submit('1','new_rep','new');">+Добавить новость или событие</a> </div>
+
+               <form method="POST" name="new" id="new" action="/tsjnews">
+                  <input type="hidden" name="new_rep" value="1">
+              </form>
+
+              <form method="POST" name="del" id="del" action="/tsjnews">
+                 <input type="hidden" id="id" name="id" >
+                 <input type="hidden" name="rep_del" value="1">
+              </form>
+
+              <form method="POST" name="edit" id="edit" action="/tsjnews">
+                 <input type="hidden" id="id" name="id" >
+                 <input type="hidden" name="rep_edit" value="1">
+              </form>
+
+                <div id="drep" class="drep">
+                   <table width="100%" cellspacing=0 class="tbl">
+                   <tr><th width=20%>Дата</th><th>Дом</th><th width=80%>Наименование</th><th>Ред.</th><th>Удал.</th></tr>
+                [%./sub/{
+                    <tr >
+                      <td  >
+                         [%date%]
+                      </td>
+                      <td  >
+                         [%house%]
+                      </td>
+                      <td name="g_label[%id%]" id = "g_label[%id%]" >
+                         [%name%]
+                      </td>
+                      <td align="right" id="func[%id%]" >
+                         <input type="button" class="rd_bt" title="редактировать" onclick="form_submit('[%id%]','id','edit')">
+                      </td>
+                      <td align="right" id="func[%id%]" >
+                         <input type="button" class="dl_bt" title="удалить" onclick="form_submit('[%id%]','id','del')">
+                      </td>
+                    </tr>
+                }%]
+                </table>
+               </div>
+         </div>
+        }
+        mode_edit_one {
+               <script>
+                 function form_submit(name)
+                 {
+                    var f = document.forms[name];
+                    f.submit();
+                    return false;
+                 }
+
+                 function check(name)
+                 {
+                    var f = document.forms[name];
+                    //alert(name);
+                    if (val(f,new Array([%fieldsWithoutFail%])) ==true )
+                       form_submit(name);
+
+                 }
+              </script>
+
+              <script type="text/javascript" src="/ckeditor/ckeditor.js"></script>
+              <div class='newsBlock'>
+                <div class='bodyNews'>
+                <p class="date">Редактирование новости</p> <br/>
+                <form  action="/tsjnews" name="fsave" method="post" enctype="multipart/form-data">
+                  <input type="hidden" name="save_submit" value="1">
+                  <input type="hidden" name="id" value="[%./id%]">
+                  <input type="hidden" name="pabl" value="0">
+                     <p>Заголовок:</p>
+                     <textarea name="name" id="manage" cols="45" rows="10">[%./name%] </textarea>
+                     <p>Краткое описание:</p>
+                     <textarea name="preview" id="manage" cols="45" rows="10">[%./preview%] </textarea>
+                     <p>Основной текст:</p>
+                     <textarea name="about" id="manage" cols="45" rows="10">[%./about%] </textarea>
+                     <script type="text/javascript">
+                     CKEDITOR.replace( 'about');
+                     </script>
+                     Картинка: <br>
+                            [%./image1/{
+                               <img class="imgSmall" onload="img_resize(this,80,80)" src="[%src%]"
+                                   onclick="show_image('[%src%]','Маленькая картинка');" />
+                                 <br clear="all" /> Удалить <input name="d_image1" type="checkbox" value="1"><br clear="all" /><br><br>Заменить на:<br />
+                            }%]
+                             <input type="file" name="image1" size="20" class="textinput" onchange="fileIsImage(this);" /><br />
+                             <br><br>
+                             Подпись к картинке: <br/><input type='text' name='alt1' value="[%alt1%]" size=30 class="textinput" />
+
+                     <div class="vhod">
+                            <div class="but">  <a href='#' class='greenButtom' onclick="form_submit('fsave')">Сохранить</a></div>
+                            <div class="but"><a href='/tsjnews' class='greenButtom' >Отмена</a> </div>
+                     </div>
+                </form>
+                </div>
+              </div>
+         }
+         mode_new {
+
+                       <script>
+                 function form_submit(name)
+                 {
+                    var f = document.forms[name];
+                    f.submit();
+                    return false;
+                 }
+
+                 function check(name)
+                 {
+                    var f = document.forms[name];
+                    //alert(name);
+                    if (val(f,new Array([%fieldsWithoutFail%])) ==true )
+                       form_submit(name);
+
+                 }
+              </script>
+
+              <script type="text/javascript" src="/ckeditor/ckeditor.js"></script>
+              <div class='newsBlock'>
+                <div class='bodyNews'>
+                <p class="date">Добавление новости</p> <br/>
+                <form  action="/tsjnews" name="fsave" method="post" enctype="multipart/form-data">
+                  <input type="hidden" name="new_submit" value="1">
+                     <p>Дом:</p>
+                     <select name='id_house'>
+                     [%./house/{
+                           <option value="[%id%]" >[%name%] [%number%] [%fract/{ /[%./fract%] }%]</option>
+                     }%]
+                     </select>
+                     <p>Заголовок:</p>
+                     <textarea name="name" id="manage" cols="45" rows="10"></textarea>
+                     <p>Краткое описание:</p>
+                     <textarea name="preview" id="manage" cols="45" rows="10"> </textarea>
+                     <p>Основной текст:</p>
+                     <textarea name="about" id="manage" cols="45" rows="10"></textarea>
+                     <br> <br>
+                     Картинка: <br>
+                     <input type="file" name="image1" size="20"  onchange="fileIsImage(this);" /><br />
+                         <br><br>
+                     Подпись к картинке: <br/><input type='text' name='alt1' value="[%alt1%]" size=30 class="textinput" />
+
+
+                     <script type="text/javascript">
+                     CKEDITOR.replace( 'about');
+                     </script>
+
+                     <div class="vhod">
+                            <div class="but">  <a href='#' class='greenButtom' onclick="form_submit('fsave')">Сохранить</a></div>
+                            <div class="but"><a href='/tsjnews' class='greenButtom' >Отмена</a> </div>
+                     </div>
+                </form>
+                </div>
+              </div>
+         }
+         mode_show {
+            <div id="allnews">
+            [%./sub/{
+               <p class='date'>[%datetime%] </p>
+                 [%sub1/{
+                  <div class='newsBlock' style="width: 447px; ">
+                            <div class='hvost'></div>
+                            <div class='bodyNews'>
+
+                                    [%image1/{<img class='img'  src="[%src%]" width="80" height="80" alt="[%./alt1%]" />}%]
+                                    <p><a href="/[%ntype%]/i/[%id%]">[%name%]</a></p><br>
+                                    <p>[%preview%] </p>
+                            </div>
+                            <p class='linkNews'><br>
+                                    <a href="/[%ntype%]/i/[%id%]" class='daleeBg'></a>
+                                    <span class='typevisible'>
+                                            <a href="/[%ntype%]" class='linknewsBg'></a>
+                                            <span class='visible'>Просмотров: [%watch%]&nbsp;&nbsp;</span>
+                                    </span>
+                            </p>
+                  </div>
+                }%]
+            }%]
+
+            [%./no_sub/{
+             <div class='centerBlock'>
+                <p class='date'>Новости и события</p><br/>
+                На данный момент нет новостей и событий для выбранного дома
+             </div>
+             }%]
+              <div id="new_news"></div>
+             </div>
+               <form method="POST" id="form_news" name="form_news" action="/ajax/tsjnews.php" >
+                  <input type="hidden" id="from" name="from" value="1">
+               </form>
+             [%./escho/{ <p align='center' class='ischo'><a href="#" class='greenButtom' style="margin-left: 260px;"  id="escho" onclick="news_submit();"/>Показать ещё</a></p>}%]
+         }
+         mode_show_one {
+              <div class='newsBlock'>
+                  <div class='bodyNews'>
+                      <p><a href='#'>[%./name%]</a></p> <br/>
+                      <p>[%./about%]</p>
+                  </div>
+                  <p class='linkNews'>
+
+                         <a href="/tsjnews" class='linknewsBg'></a>
+
+                  </p>
+              </div>
+         }
+   %]
+
+
+<!-- /NEWS -->
+

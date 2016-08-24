@@ -1,0 +1,52 @@
+  [%sub/{
+  <form  action="/zakupki/add_offer/[%id%]" id="offer_save" method="post">
+     <input type="hidden" name="save_offer" value="1">
+     <div class='newsBlock'>
+         <div class='bodyNews'>
+             <div class="zak_name"><a href='#'>[%name%]</a></div> <br/>
+              <span style="align:left;"><u>Дата начала:</u> [%date_begin%]</span> <br>
+              <span style="float:right;"><u>Дата окончания:</u> [%date_end%]</span>
+
+              <p><u>Управляющая организация:</u> [%company%]<br></p>
+                 <p><u>Адрес дома:</u> [%adress%]</p><br>
+             <p>[%preview%]</p>
+         </div>
+         <p class='linkNews'><br>
+         <a href="/zakupki/i/[%id%]" class='daleeBg'></a>
+         <span class='typevisible'>
+             <span class='visible'>Просмотров: [%watch%]&nbsp;&nbsp;</span>
+         </span>
+         </p>
+     </div>
+     <div class="zakupki_links" style="width: 500px; ">
+           Добавить предложение
+     </div>
+
+      <div class='newsBlock'>
+             [%./message/{
+                        <span class="message">
+                           [%./message%]
+                        </span>
+                        <br><br>
+             }%]
+
+           <p class='input'><span class='width50'>
+                 Текст предложения:</span>   <br />
+                 <textarea name="offer" placeholder='Введите текст Вашего предложения' id="offer" cols="45" rows="10" >[%offer%]</textarea>
+
+           </p>
+
+          <div class="vhod">
+                 <div class="but">  <a href='#' class='greenButtom' onclick="submit_forms('offer_save')">Сохранить</a></div>
+                 <div class="but"><a href='/zakupki' class='greenButtom' >Отмена</a> </div>
+          </div>
+
+
+     </div>
+     </form>
+   }%]
+
+
+
+
+

@@ -1,0 +1,64 @@
+  [%ismenu/{<div class="zakupki_links" style="width: 500px; "> }%]
+
+      [%menu/{
+             [%T/?
+                A  {  <a href="/[%./href%]" >[%./name%]</a> }
+                S  {  [%./name%]}
+                SA {  <a href="/[%./href%]" style="color: black">[%./name%]</a>}
+             %]
+      }%]
+
+  [%ismenu/{</div>
+  <div class='zaklineLk' style="width: 650px; "></div>
+  }%]
+[%sub/{
+        <div class='newsBlock' style="width: 650px; ">
+            <div class='bodyNews'>
+                 <div class="zak_name"><a href="/[%./link%]/i/[%id%]">[%name%]</a></div><br>
+
+                  <span style="align:left;"><u>Дата начала:</u> [%date_begin%]</span>
+                  <span style="float:right;"><u>Дата окончания:</u> [%date_end%]</span> <br><br>
+                  <p><u>Управляющая организация:</u> [%company%]<br></p>
+                 <p><u>Адрес дома:</u> [%adress%]</p><br>
+                 <p>[%about%]</p>
+            </div>
+            <p class='linkNews'><br>
+               <a href="/zakupki/status/1" class='linkbidsBg'></a>
+               <span class='typevisible'>
+
+                       [%vendor/{<a href="/zakupki/add_offer/[%./id%]" class='linkofferBg'></a>}%]
+                       <span class='visible'>Предложений: [%cnt%]&nbsp;&nbsp;</span>
+                       <span class='visible'>Просмотров: [%watch%]&nbsp;&nbsp;</span>
+               </span>
+            </p>
+        </div>
+}%]
+      <div class="zakupki_offers" style="width: 650px; ">Предложения поставщиков</div>
+            <div class='zaklineLk' style="width: 650px; "></div>
+      [%offer/{
+        <div class='newsBlock' style="margin: 20px 0 7px 0;" style="width: 650px; ">
+            <div class='bodyNews'>
+                [%image1/{<span style="float:right;"><img class='img'  src="[%src%]"  height="80" alt="[%./alt1%]" /></span><br>}%]
+                <div class="zak_name"><a href="/[%./link%]/vendor/1/id/[%id%]" >[%name%]</a> </div><br>
+
+                <p>[%date%]</p>
+                <p>[%offer%]</p>
+                [%redact_buttons/{
+                         <span width = "400px;">
+                           <a href="/zakupki_u/edit_offer/1/id/[%./id_zakupki%]" class='linkeditBg'></a>
+                         </span><span width = "400px;">
+                           <a href="/zakupki_u/del_offer/1/id/[%./id_zakupki%]" class='linkdelBg'></a>
+                         </span>
+                }%]
+            </div>
+            <span class='typevisible'>
+                      <span class='visible'>Просмотров: [%watch%]&nbsp;&nbsp;</span>
+            </span>
+        </div>
+      }%]
+      [%no_offers/{
+          <div class='offerBlock'>
+                 <p>Для данной закупки пока нет предложений от поставщиков</p>
+            </div>
+
+      }%]

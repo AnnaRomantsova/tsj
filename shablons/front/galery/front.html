@@ -1,0 +1,168 @@
+<!-- galery -->
+ <script>
+
+ function form_submit(id,val_name,formname)  {
+      //alert(id);
+     var elementi = document.getElementsByName(val_name);
+     var length = elementi.length;
+     for (var i = 0; i < length; i++) {
+         elementi[i].value= id;
+     }
+
+     var f = document.forms[formname];
+
+     f.submit();
+ }
+
+ function check_img(id_img,id_form){
+    //alert ('j');
+    (jQuery)('#'+id_form+' img').attr("src", "/i/chekedNoActive.png");
+    (jQuery)('#i'+id_img).attr("src", "/i/chekedActive.png");
+    (jQuery)('#ch'+id_form).attr("value", id_img);
+ };
+
+ function subm(id_form){
+    if ( (jQuery)('#ch'+id_form).attr('value')>0) (jQuery)('#f'+id_form).submit();
+ };
+
+ function subm_result(id_form){
+    (jQuery)('#f'+id_form).submit();
+ };
+ </script>
+        [%mode/?
+             mode_edit_one {
+                 [%./sub/{
+                 <form method="post" action="/galery" name="save" id="save" enctype="multipart/form-data">
+                  <input type="hidden" name="id" value="[%id%]">
+                  <input type="hidden" name="save" value="1">
+                  <input type="hidden" name="id_house" value="[%./id_house%]">
+                  <div class='newsBlock' id = 'div[%id%]'  style="width:447px;">
+                       <p class='date'>Редактирование изображения</p><br/>
+                         Картинка: <br>
+                            [%image1/{
+                               <img class="imgSmall" onload="img_resize(this,80,80)" src="[%src%]"
+                                   onclick="show_image('[%src%]','Маленькая картинка');" />
+                               <br clear="all" /><br><br>Заменить на:<br />
+                            }%]
+                             <input type="file" name="image1" size="20" class="textinput" onchange="fileIsImage(this);" /><br />
+                             <br><br>
+                             Подпись к картинке: <br/><input type='text' name='alt1' value="[%alt1%]" size=30 class="textinput" />
+
+
+                         <div class="vhod">
+                            <div class="but">  <a href='#' class='greenButtom' id="gb_edit[%id%]" onclick="form_submit('1','save','save')">Сохранить</a></div>
+                            <div class="but"> <a href='/galery' class='greenButtom' >Отмена</a> </div>
+                         </div>
+                  </div>
+                   </form>
+                 }%]
+             }
+             mode_new {
+              <form method="post" action="/galery/add/1" name="save" id="save" enctype="multipart/form-data">
+              <input type="hidden" name="new_rep_submit" value="1">
+              <div class='newsBlock' id = 'div[%id%]' style="width:447px;">
+                  <p class='date'>Добавление изображения</p><br/>
+                            Дом:
+                                <select name='id_house'>
+                                [%./house/{
+                                              <option value="[%id%]" >[%name%] [%number%] [%fract/{ /[%./fract%] }%]</option>
+                                }%]
+                                 </select>
+                                 <br>
+                                 <br> <br>
+                                   <input type="file" name="image1" size="20"  onchange="fileIsImage(this);" /><br />
+                                <br><br>
+                                 Подпись к картинке: <br/><input type='text' name='alt1' value="[%alt1%]" size=30 class="textinput" />
+                    <p class='linkNews'>
+                            <div class="but">  <a href='#' class='greenButtom' onclick="form_submit('1','new_rep_submit','save')">Сохранить</a></div>
+                            <div class="but"> <a href='/galery' class='greenButtom' >Отмена</a> </div>
+                    </p>
+              </div>
+              </form>
+             }
+             mode_edit {
+              <div class='centerBlock' style="width: 670px; ">
+                <p class='date'>Фотогалерея</p><br/>
+                <div class="but"><a href="#" onclick="form_submit('1','new_rep','new');">+Добавить фото</a> </div>
+
+               <form method="POST" name="new" id="new" action="/galery">
+                  <input type="hidden" name="new_rep" value="1">
+              </form>
+
+              <form method="POST" name="del" id="del" action="/galery">
+                 <input type="hidden" id="id" name="id" >
+                 <input type="hidden" name="rep_del" value="1">
+              </form>
+
+              <form method="POST" name="edit" id="edit" action="/galery">
+                 <input type="hidden" id="id" name="id" >
+                 <input type="hidden" name="rep_edit" value="1">
+              </form>
+
+                <div id="drep" class="drep">
+                   <table width="100%" cellspacing=0 class="tbl">
+                   <tr><th width="50%">Дом</th><th width="40%">Фото</th><th>Ред.</th><th>Удал.</th></tr>
+                [%./sub/{
+
+                    <tr >
+                      <td  >
+                         [%house%]
+                         <input type="hidden" name="pabl" value="0">
+                      </td>
+                      <td name="g_label[%id%]">
+                         [%image1/{<img class='img'  src="[%src%]"  height="80" alt="[%./alt1%]" /> }%]
+                      </td>
+                      <td align="right"  >
+                         <input type="button" class="rd_bt" title="редактировать" onclick="form_submit('[%id%]','id','edit')">
+                      </td>
+                      <td align="right"  >
+                         <input type="button" class="dl_bt" title="удалить" onclick="form_submit('[%id%]','id','del')">
+                      </td>
+                    </tr>
+                }%]
+                </table>
+               </div>
+             </div>
+            }
+
+            mode_show {
+              <div class='centerBlock' style="width: 670px; ">
+              <p class='date'>Фотогалерея</p><br/>
+
+
+
+               <script type="text/javascript" src="/_js/lb2/prototype.js"></script>
+              <script type="text/javascript" src="/_js/lb2/scriptaculous.js?load=effects"></script>
+              <script type="text/javascript" src="/_js/lb2/lightbox.js"></script>
+              <link rel="stylesheet" href="/_css/lightbox.css" type="text/css" media="screen" />
+              [%./sub/{
+               <div>
+
+                     <span class="photo_img"  style="float:left;">
+                      [%image2/{<a alt="[%./alt2%]" title="[%./alt2%]" rel="lightbox[gal]" href="[%src%]">}%]
+                      [%image1/{<img class='img'  src="[%src%]"  height="80" alt="[%./alt1%]" /> }%]
+                      [%image2/{</a>}%]
+                     </span>
+
+
+
+               </div>
+              }%]
+
+              [%./no_sub/{
+
+
+
+                   На данный момент нет изображений для выбранного дома
+
+
+              }%]
+              </div>
+          }
+        %]
+
+
+
+
+<!-- /NEWS -->
+

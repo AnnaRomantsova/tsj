@@ -1,0 +1,56 @@
+  [%ismenu/{ <div class="zakupki_links" style="width: 500px; ">}%]
+  [%menu/{
+
+             [%T/?
+                A  {  <a href="/[%./href%]">[%./name%]</a> }
+                S  {  [%./name%]}
+
+             %]
+
+  }%]
+  [%ismenu/{</div>
+  <div class='zaklineLk' style="width: 650px; "></div>
+  }%]
+  [%sub/{
+   <form  action="/zakupki_u/del_offer/1" id="offer_delete[%id%]" method="post">
+       <input type="hidden" name="save_offer" value="1">
+       <input type="hidden" name="id" value="[%id%]">
+   </form>
+   <form  action="/zakupki_u/edit_offer/1" id="offer_save[%id%]" method="post">
+       <input type="hidden" name="save_offer" value="1">
+       <input type="hidden" name="id" value="[%id%]">
+       <div class='newsBlock' style="width: 650px; ">
+                 <div class='bodyNews'>
+                         <div class="zak_name"><a href="/[%./link%]/i/[%id%]">[%name%]</a></div>
+                         <br>
+                         [%message/{
+                          <span class="message">
+                           [%./message%]
+                          </span>
+                         }%]
+                         <p><u>Дата:</u> [%date%]</p>
+                         <p>
+                         [%offer%]
+                         </p>
+
+                         <br>
+                         <span width = "400px;">
+                           <a href="/zakupki_u/edit_offer/1/id/[%id%]" class='linkeditBg'></a>
+                         </span><span width = "400px;">
+                           <a href="/zakupki_u/del_offer/1/id/[%id%]" class='linkdelBg'></a>
+                         </span>
+
+                 </div>
+
+
+       </div>
+    </form>
+ }%]
+
+ [%no_sub/{
+  <div class='centerBlock'>
+     <p class='date'>Закупки</p><br/>
+     Закупки не найдены
+  </div>
+  }%]
+  [%pager/[front/pager.html]%]

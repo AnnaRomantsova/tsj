@@ -1,0 +1,24 @@
+<div id="span_edit[%id%]" style="display:none; ">
+
+                       <form method="POST" id="save[%id%]" name="save[%id%]" action="/reports" enctype="multipart/form-data">
+                         <input type="hidden" name="id_save" id="id_save" >
+                         <input type="hidden" name="rep_submit" value="1">
+
+                         <textarea name="name"  cols="45" rows="10">[%name%] </textarea>
+
+                         <div>
+                         Файл:
+                            [%file/{
+                                   [%href%]
+                                   <br clear="all" /> Удалить <input name="d_file" type="checkbox" value="1"><br />Или заменить на:<br />
+                            }%]
+                            <br>
+                            <input type="file" name="file" size="20"  onchange="fileIsDoc(this);" /><br />
+                         </div>
+
+                         <div class="vhod">
+                            <div class="but">  <a href='#' class='greenButtom' id="gb_edit[%id%]" onclick="form_submit('[%id%]','id_save','save[%id%]')">Сохранить</a></div>
+                            <div class="but"> <a href='/reports' class='greenButtom' >Отмена</a> </div>
+                         </div>
+                       </form>
+</div>

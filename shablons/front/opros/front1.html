@@ -1,0 +1,113 @@
+<!-- opros -->
+ <script>
+
+ function form_submit(id,val_name,formname)  {
+                       var elementi = document.getElementsByName(val_name);
+                       var length = elementi.length;
+                       for (var i = 0; i < length; i++) {
+                           elementi[i].value= id;
+                       }
+
+                       var f = document.forms[formname];
+                       //alert(el.value);
+                       f.submit();
+                 }
+
+ function check_img(id_img,id_form){
+    //alert ('j');
+    $('#'+id_form+' img').attr("src", "/i/chekedNoActive.png");
+    $('#i'+id_img).attr("src", "/i/chekedActive.png");
+    $('#ch'+id_form).attr("value", id_img);
+ };
+
+ function subm(id_form){
+    if ( $('#ch'+id_form).attr('value')>0) $('#f'+id_form).submit();
+ };
+
+ function subm_result(id_form){
+    $('#f'+id_form).submit();
+ };
+
+ [%sub/{
+ $(document).ready(function(){
+    var options = {
+       target : '#div[%id%]',
+       beforeSubmit: showRequest, // функция, вызываемая перед передачей
+       success: showResponse, // функция, вызываемая при получении ответа
+       timeout: 3000 // тайм-аут
+    };
+
+
+    $('#f[%id%]').submit(function() {
+       $(this).ajaxSubmit(options);
+       return false;
+    });
+
+ });
+ }%]
+   // вызов перед передачей данных
+    function showRequest(formData, jqForm, options) {
+       var queryString = $.param(formData);
+      // alert('Вот что мы передаем: \n\n' + queryString);
+    }
+
+    // вызов после получения ответа
+    function showResponse(responseText, statusText)  {
+      // hide_form('new_group');
+
+      //alert('Статус ответа сервера: ' + statusText + '\n\nТекст ответа сервера: \n' + responseText +  '\n\nЦелевой элемент div обновиться этим текстом.');
+    }
+
+ </script>
+
+  <form method="POST" name="del" id="del" action="/opros">
+            <input type="hidden" name="del_id" value="">
+  </form>
+
+  <form method="POST" name="edit" id="edit" action="/opros">
+            <input type="hidden" name="edit_id" value="">
+  </form>
+
+  [%edit/{
+       <div class="but"><a href="/opros/add/1" class='greenButtom' >Добавить</a> </div>
+ }%]
+
+ [%sub/{
+ <div class='newsBlock' id = 'div[%id%]' style ="width:447px"><div class='hvost'></div>
+       <div class='bodyNews' id="[%id%]">
+               <p><a href=''>[%name%]</a></p>
+                [%edit/{
+
+                   <input type="button" class="rd_bt" title="редактировать"  onclick="form_submit('[%./id%]','edit_id','edit') ">
+                   <input type="button" title="удалить" class="dl_bt" onclick="form_submit('[%./id%]','del_id','del') ">
+                }%]
+
+               <table width=100%>
+                <form method="post" action="/ajax/opros.php" name="f[%id%]" id="f[%id%]"v>
+                <input type="hidden" name="checked"  id="ch[%id%]" value=0>
+                <input type="hidden" name="formid"  value="[%id%]">
+                 [%sub1/{
+                       <tr>
+                           <td><img src='/i/chekedNoActive.png' id="i[%id%]" onclick="check_img([%id%],[%./id%])"/></td>
+                           <td>[%name%]</td>
+                       </tr>
+                  }%]
+                 </form>
+               </table>
+       </div>
+       <p class='linkNews'>
+               <p class='linkOtvet'>
+                   <span class='toggleotvet' onclick="subm('[%id%]')">Голосовать</span>
+               </p>
+                 <span class='typevisible'>
+
+                      <span class='toggleotvet' onclick="subm_result('[%id%]')">Результаты</span>
+               </span>
+       </p>
+ </div>
+ }%]
+
+
+
+
+<!-- /NEWS -->

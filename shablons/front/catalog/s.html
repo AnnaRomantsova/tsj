@@ -1,0 +1,39 @@
+<!-- photo s -->
+[%PAR/path/[front/path.html]%]
+
+ <h1>[%PAR/path/last/name%]</h1>
+
+
+ <iframe name="subframe" src="/site_builder/blank.html" width="1" height="1" frameborder="0" border="0" style="border:none;padding:0;margin:0;"></iframe>
+
+ <form method="POST" action="/galery/s/[%s%]" id="subm" >
+
+
+[%sub/{
+
+  [%about%]
+  <br>
+ <br>
+  Список врачей отделения:
+
+
+   [%sub1/{
+      ФИО: <a href = /galery/s/[%id%]>[%name%]</a> <br>
+      Должность: [%duty%]  <br>
+      Краткое описание: [%preview%]  <br>
+     <hr>
+   }%]
+
+
+
+}%]
+
+
+<input type="hidden" name="quest" value="[%sub/{[%id%];}%]">
+<input type="hidden" name="cp" value="[%cp%]">
+
+<br>
+ [%next/{<input  type="submit" name="next" value="Далее" />}%]
+ [%fin/{<input  type="submit" name="fin" value="Результат" />}%]
+<!-- photo s -->
+</form>

@@ -1,0 +1,48 @@
+  <!--basket-->
+<script type="text/javascript" src="/_js/lb2/prototype.js"></script>
+<script type="text/javascript" src="/_js/lb2/scriptaculous.js?load=effects"></script>
+<script type="text/javascript" src="/_js/lb2/lightbox.js"></script>
+<link rel="stylesheet" href="/_css/lightbox.css" type="text/css" media="screen" />
+ <h3>[%PAR/path/[front/path.html]%]</h3>
+ <table>
+        <thead>
+                <tr>
+                        <td class="first">&nbsp;</td>
+                        <td class="aleft"> нига</td>
+
+                </tr>
+        </thead>
+        <tbody>
+        [%sub/{
+             <tr  [%gray%]>
+                 <td class="rel">
+                  [%image1/{
+                     [%./image2/{<a href="[%./image2/{ [%src%] }%]" rel="lightbox[gal]">}%]
+                     <img src="[%./image1/{ [%src%] }%]"  />
+                  }%]
+                     [%image2/{ </a> }%]
+                  [%image2/{<a href="[%./image2/{ [%src%] }%]" rel="lightbox[gal]" class="plus"></a>}%]                 </td>
+                 <td class="aleft itemtitle">[%autor%] [%name%]</td>
+
+
+
+             </tr>
+         }%]
+         </tbody>
+         <tfoot>
+                 <tr>
+                         <td colspan="5">
+                                 <div>
+
+
+                                     <form action = "order" method="get">
+                                         <input type="submit" value="ќформить заказ" class="make" />
+                                     </form>
+
+                                 </div>
+                         </td>
+                 </tr>
+         </tfoot>
+  </table>
+
+    <!--basket-->

@@ -1,0 +1,124 @@
+<h3>[%PAR/path/[front/path.html]%]</h3>
+
+
+<div class=message>[%message%]</div>
+
+[%auth/{
+<form action="/order" method="post">
+    <input type="hidden" name="ord">
+    <table class=form-onpage>
+     <tr>
+           <td class=aleft><label class="input">Фамилия:</label></td>
+           <td><input  type="text" name="surname" value="[%surname%]"/></td>
+     </tr>
+
+     <tr>
+           <td class=aleft><label class="input">Имя:</label></td>
+           <td><input  type="text" name="name" value="[%name%]"/></td>
+     </tr>
+     <tr>
+           <td class=aleft><label class="input">Отчество:</label></td>
+           <td><input  type="text" name="sec_name" value="[%secname%]" /></td>
+     </tr>
+
+     <tr>
+           <td class=aleft><label class="input">Контактный телефон:</label></td>
+           <td><input  type="text" name="tel" value="[%tel%]"/></td>
+     </tr>
+     <tr>
+            <td class=aleft><label class="input">Адрес:</label></td>
+            <td><input  type="text" name="adress" value="[%adress%]"/></td>
+     </tr>
+
+     <tr>
+            <td class=aleft><label class="input">Компания:</label></td>
+            <td><input  type="text"  name="company" value="[%company%]"/></td>
+     </tr>
+     <tr>
+           <td></td>
+           <td class=aleft><input type="submit" class="right img" value="Заказать" /> </td>
+      </tr>
+
+   </table>
+ </form>
+}%]
+
+[%no_auth/{
+<table><tr>
+
+ <td>
+<form action="/auth" method="post">
+  <input type="hidden" name="register"/>
+  <table class=form-onpage>
+        <tr><td colspan="2" class=header><h4>Я новый покупатель</h4></td></tr>
+
+        <tr>
+          <td class=aleft><label class="input">E-mail:</label> </td>
+          <td><input type="text" name="e_mail" value="[%email%]"/> </td>
+     </tr>
+     <tr>
+           <td class=aleft><label class="input">Пароль:</label></td>
+           <td><input  type="password" c name="password" value="[%password%]"/></td>
+
+     </tr>
+     <tr>
+           <td class=aleft><label class="input">Фамилия:</label></td>
+           <td><input  type="text" name="surname" value="[%surname%]"/></td>
+     </tr>
+     <tr>
+           <td class=aleft><label class="input">Имя:</label></td>
+           <td><input  type="text" name="name" value="[%name%]"/></td>
+
+     </tr>
+     <tr>
+           <td class=aleft><label class="input">Отчество:</label></td>
+           <td><input  type="text" name="sec_name" value="[%secname%]" /></td>
+     </tr>
+     <tr>
+           <td class=aleft><label class="input">Контактный телефон:</label></td>
+           <td><input  type="text" name="tel" value="[%tel%]"/></td>
+
+     </tr>
+     <tr>
+            <td class=aleft><label class="input">Адрес:</label></td>
+            <td><input  type="text" name="adress" value="[%adress%]"/></td>
+     </tr>
+     <tr>
+            <td class=aleft><label class="input">Компания:</label></td>
+            <td><input  type="text"  name="company" value="[%company%]"/></td>
+
+     </tr>
+     <tr>
+           <td></td>
+           <td class=aleft><input type="submit" class="right img" value="Зарегистрироваться" /> </td>
+      </tr>
+   </table>
+ </form>
+ </td>
+
+ <td class=atop>
+<form action="/auth" method="post">
+  <input type="hidden" name="log_in"/>
+  <table class=form-onpage>
+          <tr><td colspan="2"><h4>Я уже совершал покупки</h4></td></tr>
+       <tr>
+          <td class=aleft><label class="input">E-mail:</label> </td>
+
+          <td><input type="text" name="e_mail" value="[%email%]"/> </td>
+     </tr>
+     <tr>
+           <td class=aleft><label class="input">Пароль:</label></td>
+           <td><input type="password" name="password" value="[%pass%]"/></td>
+     </tr>
+     <tr>
+           <td></td>
+
+           <td class=aleft><input type="submit" class="right img" value="Авторизоваться" /> </td>
+      </tr>
+   </table>
+ </form>
+ </td>
+
+ </tr></table>
+
+}%]

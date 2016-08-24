@@ -1,0 +1,69 @@
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Strict//EN' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
+<html>
+        <head>
+
+        </head>
+        <link rel="stylesheet" href="css/milkbox/milkbox.css" media="screen" />
+              <script src="js/mootols/mootools-core.js"></script>
+              <script src="js/mootols/mootools-more.js"></script>
+              <script src="js/mootols/milkbox.js"></script>
+        <script type="text/javascript">
+        // <![CDATA[
+                var addJsonGalleries;
+
+                $(window).addEvent('domready',function(){
+
+                        addJsonGalleries = function(){
+
+                                //add 3 json galleries
+                                milkbox.addGalleries([
+                                        { name:'obj-gall1', autoplay:true, autoplay_delay:4, files:[ { href:'img/01b.jpg', title:'Test title' }, { href:'swf/testswf1.swf?var1=yellow&var2=300', size:"width:550, height:400" } ]},
+
+                                        { name:'obj-gall2', autoplay_delay:9, files:[ { href:'swf/testswf2.swf?var1=ultex&var2=30', size:"width:400, height:300" }, { href:'swf/testswf1.swf', size:"width:550, height:400" } ]},
+
+                                        { name:'obj-gall3', files:[ { href:'img/croda-b.jpg' }, { href:'img/ska-b.jpg' } ]}
+                                ]);
+
+                        }//addObjGalleries
+
+                });
+        // ]]>
+        </script>
+
+    <body>
+        <div id="box">
+                <table id="gallery">
+                        <tr>
+                                <td><a href="img/01b.jpg" data-milkbox="milkbox:g1" title="Lorem ipsum..."><img src="img/01.jpg" alt="" width="100" height="100" /></a></td>
+
+                                <td><a href="img/croda-b.jpg" data-milkbox="milkbox:g1" title="There's an auto-sizing border-left in the nav section, that help to visually separate it from the caption. &lt;a href=#&gt;This is a link&lt;/a&gt;, use html entities and no quotes to write links in the title property. "><img src="img/croda.jpg" alt="" width="100" height="100" /></a></td>
+
+                                <td><a href="html-external/external.html" data-milkbox="milkbox:g1" data-milkbox-size="width:600,height:450" title="HTML page in iframe"><img src="img/html.png" alt="" width="100" height="100" /></a></td>
+
+                                <td style="width:100px"><a href="swf/logo.swf" data-milkbox="milkbox:g1" data-milkbox-size="width:600,height:200" title="This is an Swf file. You need Flash Player 10 to see it correctly"><img src="img/logo.jpg" alt="" width="100" height="100" /></a></td>
+                        </tr>
+                </table>
+
+               
+        </div><!-- /box -->
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

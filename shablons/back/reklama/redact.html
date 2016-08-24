@@ -1,0 +1,103 @@
+<html>
+<head>
+<LINK rel="stylesheet" type="text/css" href="/_css/back.css">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1251">
+<script type="text/javascript" src="/_js/func_include.js"></script>
+<script type="text/javascript">
+        include(new Array('/_js/back/func_validTypeFile.js','/site_builder/includes/show_window/show_window.js','/_js/func_validFields.js'));
+</script>
+</head>
+<body>
+<table border="0" cellspacing="0" cellpadding="0">
+   <tr height="21"><td width="1" height="15" bgcolor="#5177A3"><img src="/_images/back/spacer.gif" width="1" height="1"></td>
+       <td width="100%" nowrap background="/_images/back/sky_title_back2.gif" class="title">
+       [%path/[back/path.html]%]</td>
+       <td width="1" height="15" bgcolor="#5177A3"><img src="/_images/back/spacer.gif" width="1" height="1"></td>
+   </tr>
+</table>
+<br />
+
+[%calend1/include/[]%]
+
+<form action="?save[%add/{_new=1}%][%edit/{=[%./id%]}%]" method="post" enctype="multipart/form-data" onsubmit="return val(this,new Array('name'));">
+
+<table cellspacing=0 class="tbl">
+<tr >
+<th colspan=4>
+   Фильтр
+</th>
+</tr >
+<tr>
+<tr><td valign="top" width="200px;"><b>Город:</b><br><br>
+           [%city_sub/{
+              <input type="checkbox" name=city[%id%] [%checked%]>[%name%]<br>
+           }%]
+   </td>
+
+   <td><b>Страницы:</b><br> <br>
+           [%pages_sub/{
+              <input type="checkbox" name=pages[%id%] [%checked%]>[%name%]<br>
+           }%]
+   </td></tr>
+  </table>
+  <br>
+
+<table cellspacing="3" class="form">
+   <tr><td></td><td width="100%"></td></tr>
+    <tr valign="bottom">
+       <td>Ссылка:
+           <input type="text" name="link"  class="textinput" value="[%link%]" width="200px;" placeholder="без http://"/><br />
+     </td>
+     </tr>
+   <tr valign="bottom">
+       <td>Картинка:
+       <br />
+
+       [%image1/{
+
+        <img class="imgSmall" onload="img_resize(this,80,80)" src="[%src%]"
+          onclick="show_image('[%src%]','Маленькая картинка');" />
+         <br clear="all" /> Удалить <input name="d_image1" type="checkbox" value="1"><br />Или заменить на:<br />
+
+
+       }%]
+           <input type="file" name="image1" size="20" class="textinput" onchange="fileIsImage(this);" /><br />
+           <!--Сохранить название <input name="kn_image1" type="checkbox" value="1" /><br />-->
+          <!--Alt: <br/><input type='text' name='alt1' value="[%alt1%]" size=30 class="textinput" />-->
+
+
+     </td>
+     </tr>
+     <input type="hidden" name="pabl" value="1">
+
+
+   <!--
+   <tr><td>Управляющая организация</td>
+       <td><select name="id_company">
+           [%company_sub/{
+              <option value=[%id%] [%selected%]>[%name%]</option>
+           }%]
+           </select>
+   </td></tr>
+   -->
+  <!-- <tr><td>Title: </td>
+       <td><input type='text' name='title' value="[%title%]" size=50 class="textinput" /></td>
+   </tr>
+   <tr><td>Description: </td>
+       <td><input type='text' name='description' value="[%description%]" size=50 class="textinput" /></td>
+   </tr>
+   <tr><td>Keywords: </td>
+       <td><input type='text' name='keywords' value="[%keywords%]" size=50 class="textinput" /></td>
+   </tr>
+  -->
+</table>
+
+
+<br /><br />
+
+<br /><br />
+<input type='submit' value='' class='save_but'>&nbsp;&nbsp;
+<input type='button' value='' class='cnsl_but' onclick="location.href='?[%edit/{id_back=[%./id%]}%]';">
+</form>
+</body>
+</html>

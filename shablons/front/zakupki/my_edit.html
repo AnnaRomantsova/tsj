@@ -1,0 +1,23 @@
+
+  [%sub/{
+   <form  action="/zakupki_u/" id="offer_save" method="post">
+       <input type="hidden" name="save_offer" value="1">
+       <input type="hidden" name="id" value="[%id%]">
+       <div class='newsBlock' >
+                 <div class='bodyNews'>
+                         <div class="zak_name"><a href="/[%./link%]/i/[%id%]">[%name%]</a></div>
+                         <br>
+                          <p class='input'>
+                             <textarea name="offer" placeholder='Введите текст предложения' id="offer" cols="45" rows="10" >[%offer%]</textarea>
+                          </p>
+
+                            <div class="vhod">
+                                         <div class="but">  <a href='#' class='greenButtom' onclick="submit_forms('offer_save')">Сохранить</a></div>
+                                         <div class="but"><a href='/zakupki_u' class='greenButtom'  >Отмена</a> </div>
+                            </div>
+                 </div>
+
+
+       </div>
+    </form>
+ }%]

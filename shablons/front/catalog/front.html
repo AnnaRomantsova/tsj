@@ -1,0 +1,88 @@
+<!-- catalog-->
+<script type="text/javascript" src="/_js/lb2/prototype.js"></script>
+<script type="text/javascript" src="/_js/lb2/scriptaculous.js?load=effects"></script>
+<script type="text/javascript" src="/_js/lb2/lightbox.js"></script>
+<link rel="stylesheet" href="/_css/lightbox.css" type="text/css" media="screen" />
+
+[%goods/{
+<table >
+  <thead>
+                                        <tr>
+                                                <td class="first">&nbsp;</td>
+
+                                                <td class="aleft js-hover [%./art%] ">
+                                                        <a href="/catalog/s/[%./s%]/autor/[%./art_Ahref%]"
+                                                         [%./art/{ class="order"}%] ><b>Автор</b></a>
+                                                        <span class="order">
+                                                            [%./art_href/?
+                                                              art_asc { <a class="gasc2"></a> }
+                                                              art_notasc {<a href="/catalog/s/[%./s%]/autor/asc" class="gasc"></a>}
+                                                            %]
+                                                            [%./art_dhref/?
+                                                              art_desc { <a class="gdesc2"></a> }
+                                                              art_notdesc {<a href="/catalog/s/[%./s%]/autor/desc" class="gdesc"></a>}
+                                                            %]
+                                                         </span>
+
+                                                </td>
+                                                <td class="aleft js-hover [%./name%]">
+                                                        <a href="/catalog/s/[%./s%]/name/[%./name_Ahref%]"
+                                                        [%./name/{ class="order"}%] ><b>Наименование</b></a>
+                                                        <span class="order">
+                                                            [%./name_href/?
+                                                              name_asc { <a class="gasc2"></a> }
+                                                              name_notasc {<a href="/catalog/s/[%./s%]/name/asc" class="gasc"></a>}
+                                                            %]
+                                                            [%./name_dhref/?
+                                                              name_desc { <a class="gdesc2"></a> }
+                                                              name_notdesc {<a href="/catalog/s/[%./s%]/name/desc" class="gdesc"></a>}
+                                                            %]
+                                                        </span>
+
+                                                </td>
+
+                                                <td>В наличии</td>
+
+                                                <td >&nbsp;</td>
+                                        </tr>
+                                </thead>
+    <tbody >
+}%]
+[%sub/{
+          <tr [%gray%]>
+              <td class="rel">
+                  [%image1/{
+                     [%./image2/{<a href="[%./image2/{ [%src%] }%]" rel="lightbox[gal]">}%]
+                     <img src="[%./image1/{ [%src%] }%]"  />
+
+                  }%]
+                     [%image2/{ </a> }%]
+                  [%image2/{<a href="[%./image2/{ [%src%] }%]" rel="lightbox[gal]" class="plus"></a>}%]
+
+                </td>
+
+              <td class="aleft">[%autor%]</td>
+              <td class="aleft">[%name%]</td>
+
+              <td [%td_gray%]>Да</td>
+
+
+              <td>
+                <a href="#" class="cash" product="[%id%]" max="[%max%]" start="1" [%cnt_order/{visual="[%./cnt_order%]"}%]  price="[%price_rozn_rub%]">В корзину</a>
+              </td>
+           </tr>
+
+
+}%]
+[%goods/{
+     <tr >  <td colspan = "8"  align="left" ></td></tr>
+
+     </tbody>
+
+ </table>
+
+ [%./pager/[front/pager.html]%]
+
+}%]
+[%no_goods/{Каталог обновляется}%]
+<!-- catalogВ этой группе нет товаров-->

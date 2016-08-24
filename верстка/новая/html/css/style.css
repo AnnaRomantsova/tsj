@@ -1,0 +1,509 @@
+﻿.wrap{
+        margin: 0 auto;
+        width: 960px;
+}
+div.head{
+        width: 100%;
+        float: left;
+}
+        a.logo{
+                display: block;
+                float: left;
+                margin-top: 50px;
+                font: 24px Century Gothic;
+                text-decoration: none;
+        }
+        div.date{
+                float: right;
+                font-size: 12px;
+                margin-top: 56px;
+        }
+                div.date span{
+                        font-size: 16px;
+                        color: #5ba012;
+                }
+        div.topMenu{
+                margin-top: 7px;
+                width: 100%;
+                height: 54px;
+                float: left;
+                background: url("../img/topMenuBg.png");
+        }
+        div.groupselect{
+                width: 580px;
+                float: left;
+                margin-top: 12px;
+        }
+                div.groupselect select{
+                        height: 35px;
+                        margin-right: 10px;
+                        font-size: 14px;
+                }
+                        div.groupselect select[name=city]{
+                                width: 180px;
+                        }
+                        div.groupselect select[name=street]{
+                                width: 210px;
+                        }
+                        div.groupselect select[name=number]{
+                                width: 100px;
+                        }
+                div.nameTsj{
+                        float: right;
+                        font-size: 14px;
+                        margin-top: 15px;
+                }
+
+        div.content{
+                width: 100%;
+                float: left;
+                background: #f3f5ef;
+                height: 100%;
+                min-height: 100%;
+                padding-bottom: 20px;
+        }
+        div.content a{
+                color: #00aff0;
+        }
+                div.leftMenu{
+                        width: 200px;
+                        float: left;
+                        margin-top: 30px;
+                }
+        div.leftMenu ul li, div.leftMenu ul{
+                margin: 0;
+                padding:0;
+                width:173px;
+        }
+
+        div.leftMenu ul li{
+                list-style: none;
+                height: 43px;
+                width: 213px;
+        }
+                div.leftMenu ul li:hover, div.leftMenu ul li.active{
+                        background: url("../img/activeMenu.png");
+                }
+        div.leftMenu ul li a{
+                font-size: 13px;
+                text-decoration: none;
+                font-weight: 700;
+        }
+        div.leftMenu ul li a:hover, div.leftMenu ul li a.active{
+                color: #00aff0;
+        }
+        div.leftMenu ul li a{
+                display: block;
+                float: left;
+                height: 21px;
+                padding: 12px 0 10px 45px;
+                color: #333333;
+        }
+                div.leftMenu ul li a.lk{
+                        color: #5ba012;
+                }
+                div.leftMenu ul li a.item1{
+                        background: url("../img/icon1.png") no-repeat 12px 8px;
+                }
+                div.leftMenu ul li a.item1:hover, div.leftMenu ul li a.item1:active{
+                        background: url("../img/icon1a.png") no-repeat 12px 8px;
+                }
+
+                div.leftMenu ul li a.item2{
+                        background: url("../img/icon2.png") no-repeat 17px 8px;
+                }
+                div.leftMenu ul li a.item2:hover, div.leftMenu ul li a.item2:active{
+                        background: url("../img/icon2a.png") no-repeat 17px 8px;
+                }
+
+                div.leftMenu ul li a.item3{
+                        background: url("../img/icon3.png") no-repeat 8px 8px;
+                }
+                div.leftMenu ul li a.item3:hover, div.leftMenu ul li a.item3:active{
+                        background: url("../img/icon3a.png") no-repeat 8px 8px;
+                }
+
+                div.leftMenu ul li a.item4{
+                        background: url("../img/icon4.png") no-repeat 12px 8px;
+                }
+                div.leftMenu ul li a.item4:hover, div.leftMenu ul li a.item4:active{
+                        background: url("../img/icon4a.png") no-repeat 12px 8px;
+                }
+
+                div.leftMenu ul li a.item5{
+                        background: url("../img/icon5.png") no-repeat 12px 8px;
+                }
+                div.leftMenu ul li a.item5:hover, div.leftMenu ul li a.item5:active{
+                        background: url("../img/icon5a.png") no-repeat 12px 8px;
+                }
+
+
+                div.leftMenu ul li a.item1lk{
+                        background: url("../img/icon1lk.png") no-repeat 14px 8px;
+                }
+                div.leftMenu ul li a.item1lk:hover, div.leftMenu ul li a.item1lk:active{
+                        background: url("../img/icon1lka.png") no-repeat 14px 8px;
+                }
+                div.leftMenu ul li a.item2lk{
+                        background: url("../img/icon2lk.png") no-repeat 12px 8px;
+                }
+                div.leftMenu ul li a.item2lk:hover, div.leftMenu ul li a.item2lk:active{
+                        background: url("../img/icon2lka.png") no-repeat 12px 8px;
+                }
+                div.leftMenu ul li a.item3lk{
+                        background: url("../img/icon3lk.png") no-repeat 14px 8px;
+                }
+                div.leftMenu ul li a.item3lk:hover, div.leftMenu ul li a.item3lk:active{
+                        background: url("../img/icon3lka.png") no-repeat 14px 8px;
+                }
+                div.leftMenu ul li a.item4lk{
+                        background: url("../img/icon4lk.png") no-repeat 13px 8px;
+                }
+                div.leftMenu ul li a.item4lk:hover, div.leftMenu ul li a.item4lk:active{
+                        background: url("../img/icon4lka.png") no-repeat 16px 10px;
+                }
+                div.leftMenu ul li a.item5lk{
+                        background: url("../img/icon5lk.png") no-repeat 12px 8px;
+                }
+                div.leftMenu ul li a.item5lk:hover, div.leftMenu ul li a.item5lk:active{
+                        background: url("../img/icon5lka.png") no-repeat 11px 8px;
+                }
+                div.leftMenu ul li a.item6lk{
+                        background: url("../img/icon6lk.png") no-repeat 12px 8px;
+                }
+                div.leftMenu ul li a.item6lk:hover, div.leftMenu ul li a.item6lk:active{
+                        background: url("../img/icon6lka.png") no-repeat 12px 8px;
+                }
+                div.leftMenu ul li a.item7lk{
+                        background: url("../img/icon7lk.png") no-repeat 12px 8px;
+                }
+                div.leftMenu ul li a.item7lk:hover, div.leftMenu ul li a.item7lk:active{
+                        background: url("../img/icon7lka.png") no-repeat 12px 8px;
+                }
+                div.leftMenu ul li a.item8lk{
+                        background: url("../img/icon8lk.png") no-repeat 10px 8px;
+                }
+                div.leftMenu ul li a.item8lk:hover, div.leftMenu ul li a.item8lk:active{
+                        background: url("../img/icon8lka.png") no-repeat 10px 8px;
+                }
+
+        div.centerBlock{
+                width: 670px;
+                float: left;
+                margin: 10px 0 0 25px;
+        }
+                div.centerBlock p.date{
+                        font-size: 24px;
+                        margin: 10px 0;
+                        float: left;
+                }
+                div.newsBlock{
+                        background: #ffffff;
+                        width: 647px;
+                        float: left;
+                        margin: 20px 0 20px 0;
+                        box-shadow: 2px 2px 1px rgba(207,208,203,1);
+                        border-radius: 5px;
+                        padding: 20px 20px 15px 20px;
+                        position: relative;
+                        overflow: visible;
+                }
+                        div.hvost{
+                                background: url("../img/hvost.png");
+                                width: 22px;
+                                height: 11px;
+                                position: absolute;
+                                bottom: -11px;
+                                left: 40px;
+                        }
+                        div.centerBlock div.bodyNews p{
+                                width: auto;
+                                float: none;
+                        }
+                        div.bodyNews img.img{
+                                float: left;
+                                margin: 0 20px 0 0px;
+                        }
+                        div.bodyNews p a{
+                                color: #0083b2;
+                                font-size: 14px;
+                        }
+                        p.linkNews{
+                                margin: 10px 0 0 0px;
+                        }
+                                a.linkNewsBg{
+                                        width: 76px;
+                                        height: 18px;
+                                        background: url("../img/news.png");
+                                        display: block;
+                                        float: left;
+                                }
+                                        a.linkNewsBg:hover{
+                                                background: url("../img/newsActive.png") no-repeat center;
+                                        }
+                                        a.linkNewsBg:active{
+                                                background: url("../img/newsClicl.png") no-repeat center;
+                                        }
+                                a.daleeBg{
+                                        width: 84px;
+                                        height: 18px;
+                                        background: url("../img/dalee.png");
+                                        display: block;
+                                        float: left;
+                                }
+                                        a.daleeBg:hover{
+                                                background: url("../img/daleeActive.png") no-repeat center;
+                                        }
+                                        a.daleeBg:active{
+                                                background: url("../img/daleeClick.png") no-repeat center;
+                                        }
+                                span.typevisible{
+                                        float: right;
+                                        margin: 0px 20px 0 0;
+
+                                }
+                                span.visible{
+                                        background: url("../img/prosmotry.png") no-repeat center;
+                                        height: 18px;
+                                        position: relative;
+                                        margin: 0 0 0 5px;
+                                        font-size: 11px;
+                                        width: 109px;
+                                        padding: 0 10px;
+                                }
+
+        p.ischo{
+                margin: 20px 0;
+                float: left;
+                text-align: center;
+                width: 100%;
+        }
+
+        div.rightBlock{
+                width: 230px;
+                float: left;
+                margin: 40px 0 0 35px;
+        }
+
+        div.footer{
+                width: 100%;
+                float: left;
+                background: #e8ebe0;
+                height: 90px;
+                padding: 35px 0 0 0;
+        }
+        p.bottomMenu{
+                float: left;
+        }
+                p.bottomMenu a{
+                        margin: 0 10px;
+                        text-decoration: none;
+                        text-transform: uppercase;
+                }
+        p.razr{
+                float: right;
+        }
+                p.razr a{
+                        color: #00aff0;
+                }
+
+        div.lineLk{
+                width: 100%;
+                margin: 20px 0;
+                border-top: 1px solid #e8ebe0;
+                border-bottom: 1px solid #ffffff;
+        }
+
+        div.consult p{
+                font-size: 14px;
+        }
+        p.theme{
+                margin: 0px 0 10px 0;
+        }
+        p.linkOtvet{
+                float: left;
+                width: 105%;
+                margin: 10px 0;
+        }
+        div.consult p.vopos{
+
+                font-size: 13px;
+        }
+                span.toggleotvet{
+                        display: block;
+                        float: left;
+                        background: url("../img/otvery.png");
+                        width: 150px;
+                        height: 18px;
+                        text-align: center;
+                        font-size: 11px;
+                        text-transform: uppercase;
+                        cursor: pointer;
+                }
+                        span.toggleotvet:hover{
+                                background: url("../img/otveryHover.png");
+                        }
+                        span.toggleotvet:active{
+                                background: url("../img/otveryactive.png");
+                        }
+                span.otvetvis{
+                        float: right;
+                        top: 0;
+                        text-align: center;
+                }
+        div.otvety{
+                margin: -2px 0 20px 0;
+        }
+        div.allMessage{
+                width: 730px;
+        }
+        div.centerBlock p{
+                width: 100%;
+                float: left;
+        }
+
+        div.centerBlock input[type=text], div.centerBlock input[type=password]{
+                border: 2px solid #d8dbd0;
+                border-radius: 5px;
+                padding: 5px 5px;
+                margin: 3px 0 0 0;
+                background: #ffffff;
+        }
+        p.input{
+                font-size: 14px;
+        }
+        div.centerBlock input.w320{
+                width: 350px;
+        }
+        div.centerBlock input.w160{
+                width: 160px;
+        }
+                span.width50{
+                        width: 190px;
+                        float: left;
+                }
+
+        div.message{
+                        background: #ffffff;
+                        width: 100%;
+                        float: left;
+                        margin: 10px 0 10px 0;
+                        box-shadow: 2px 2px 2px rgba(0,0,0,0.3);
+                        border-radius: 5px;
+                        padding: 20px 20px 15px 20px;
+        }
+        div.noread{
+                background: #f4f3df;
+        }
+                img.avatar{
+                        float: left;
+                        margin: 0 25px 0 0;
+                }
+                div.nameDate{
+                        width: 130px;
+                        float: left;
+                        margin: 0 25px 0 0;
+                }
+                        div.nameDate p.name{
+                                font-size: 14px;
+                                color: #00aff0;
+                        }
+                        div.nameDate p.date{
+                                font-size: 12px;
+                        }
+                div.isMessage{
+                        width: 420px;
+                        float: left;
+                        margin: 0 0px 0 0;
+                        cursor: pointer;
+                }
+                span.noReadCount, span.noReadCountMenu{
+                        font-size: 11px;
+                        position: relative;
+                        top: -10px;
+                        left: 5px;
+                        color: #00aff0;
+                }
+                span.noReadCountMenu{
+                        top: -1px;
+                        left: 2px;
+                }
+                div.oneMessage{
+                        width: 100%;
+                        float: left;
+                        margin: 10px 0;
+                }
+                td.procent{
+                        font-weight: 900;
+                        margin: 10px;
+                }
+
+                div.zalivka{
+                                height: 1000px;
+                                width: 100%;
+                                position: absolute;
+                                background: url("../img/zalivka.png") repeat;
+                                z-index: 9999;
+                        }
+                        div.popupWindow{
+                                width:270px;
+                                height: 150px;
+                                position: fixed;
+                                top: 20%;
+                                left: 35%;
+                                background: #e8ebe0;;
+                                z-index: 99999;
+                                padding: 20px;
+                                border: 4px solid #ffffff;
+                                border-radius: 10px;
+                        }
+                        div.popupWindow  table{
+                                margin: 0px 0 0 0;
+                        }
+                        div.popupWindow input[type='text']{
+                                background: #ffffff;
+                                border:0;
+                                padding: 5px;
+                                width: 180px;
+                                border-radius: 5px;
+                                margin: 2px 0;
+                        }
+                        div.popupWindow  table a{
+                                color: #00aff0;
+                        }
+                        #closePopup{
+                                position: absolute;
+                                top: 3px;
+                                right: 3px;
+                                cursor: pointer;
+                                color: #00aff0;
+                                font-size: 14px;
+                        }
+                        div.dispNone{
+                                display: none;
+                        }
+
+                        div.content a.blueButtom, div.content a.greenButtom{
+                                display: block;
+                                background: url("../img/bottonNoActive.png");
+                                width: 147px;
+                                height: 16px;
+                                text-align: center;
+                                padding: 10px 0;
+                                color: #000000;
+                                text-transform: uppercase;
+                                font: 11px Century Gothic;
+                                text-decoration: none;
+                                margin-left: 30px;
+                        }
+                        div.content a.blueButtom:hover, div.content a.greenButtom:hover{
+                                background: url("../img/bottonActive.png");
+                        }
+
+                        div.content a.greenButtom{
+                                background: url("../img/GreenbottonNoActive.png");
+                        }
+
+                        div.content a.greenButtom:hover{
+                                        background: url("../img/GreenbottonActive.png");
+                        }

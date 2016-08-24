@@ -1,0 +1,70 @@
+  [%ismenu/{ <div class="zakupki_links" style="width: 500px; ">}%]
+  [%menu/{
+
+             [%T/?
+                A  {  <a href="/[%./href%]">[%./name%]</a> }
+                S  {  [%./name%]}
+
+             %]
+
+  }%]
+  [%ismenu/{</div>
+  <div class='zaklineLk' style="width: 650px; "></div>
+  }%]
+  [%filters/{
+          <form action="[%./filter_link%]" method="post" id="filter_form">
+           <select name="id_city">
+           <option value="0" [%no_city/{selected}%]  style="color:gray;">Все города</option>
+           [%./city_sub/{
+              <option value=[%id%] [%selected%]>[%name%]</option>
+           }%]
+           </select>
+           &nbsp;&nbsp;&nbsp;
+          <select name="id_act_category" width="300px">
+           <option value="0" [%no_act_category/{selected}%] style="color:gray;">Все виды деятельности</option>
+           [%./act_category_sub/{
+              <option value=[%id%] [%selected%]>[%name%]</option>
+           }%]
+           </select>
+           <a href='#' onclick="submit_forms('filter_form')"><span class="search_button">Найти</span></a>
+
+          </form>
+  }%]
+  [%sub/{
+       <div class='newsBlock' style="width: 650px; ">
+                 <div class='bodyNews'>
+                         <div class="zak_name"><a href="/[%./link%]/i/[%id%]">[%name%]</a></div><br>
+
+                         <span style="align:left;"><u>Дата начала:</u> [%date_begin%]</span>
+                         <span style="float:right;"><u>Дата окончания:</u> [%date_end%]</span>  <br> 
+
+                         <br>
+                         <p ><u>Управляющая организация:</u> [%company%]</p>
+                         <p><u>Адрес дома:</u> [%adress%]</p>
+
+                         <p><u>Вид деятельности:</u> [%act_category%]</p>
+                         <br>
+                         <p>[%preview%] </p>
+                 </div>
+                 <p class='linkNews'><br>
+                         <a href="/zakupki/i/[%id%]" class='daleeBg'></a>
+                         <span class='typevisible'>
+                                 [%vendor/{<a href="/[%././link%]/add_offer/[%./id%]" class='linkofferBg'></a>}%]
+                                 <span class='visible'>Предложений: [%cnt%]&nbsp;&nbsp;</span>
+                         </span>
+                  </p>
+                 <!-- <p class='linkNews'><br>
+                         <span class='typevisible'>
+
+                         </span>
+                 </p>-->
+       </div>
+ }%]
+
+ [%no_sub/{
+  <div class='centerBlock'>
+     <p class='date'>Закупки</p><br/>
+     Закупки не найдены
+  </div>
+  }%]
+  [%pager/[front/pager.html]%]

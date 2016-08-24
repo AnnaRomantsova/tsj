@@ -1,0 +1,18 @@
+              [%sub/{
+                   <tr>
+                      <td name="g_label[%id%]" id = "g_label[%id%]"  style="float:left;" width="70%" > [%name%]  </span>
+                      <td id="span_edit[%id%]" style="display:none; ">
+                         <input type="text" class='w180' name="g_edit[%id%]" id="g_edit[%id%]" value="[%name%] " style=" float:left;">
+                         <input type="submit" id="gb_edit[%id%]" style=" float:left;" value="OK" >
+                      </td>
+                      <td align="right" id="func[%id%]">
+                         <a href="#" onclick = "show_form('span_edit[%id%]');  hide_form('g_label[%id%]'); hide_form('func[%id%]')">ред.</a>
+                         <a href="#" onclick = "del_group('[%id%]');">удалить</a>
+                      </td>
+                    </tr>
+
+               }%]
+
+
+
+

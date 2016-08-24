@@ -1,0 +1,153 @@
+<!-- about -->
+    <script type="text/javascript" src="/_js/func_include.js"></script>
+               <script type="text/javascript">
+                  include(new Array('/_js/back/func_validTypeFile.js','/site_builder/includes/show_window/show_window.js'));
+               </script>
+               <script type="text/javascript">
+
+
+                 function show_form(name)  {
+                     var div = document.getElementById(name);
+                     div.style.display = 'block';
+                 }
+
+                 function hide_form(name)  {
+                     var div = document.getElementById(name);
+                     div.style.display = 'none';
+                 }
+
+                 function form_submit(id,val_name,formname)  {
+                       var elementi = document.getElementsByName(val_name);
+                       var length = elementi.length;
+                       for (var i = 0; i < length; i++) {
+                           elementi[i].value= id;
+                       }
+
+                       var f = document.forms[formname];
+                       //alert(el.value);
+                       f.submit();
+                 }
+
+              </script>
+    <div class='centerBlock' style="width: 670px; ">
+        [%path/last/name/{<p class='date'>[%./name%]</p><br/>}%]
+
+
+        [%mode/?
+             mode_edit_one {
+                 [%./sub/{
+                   <div id="span_edit[%id%]" >
+
+                       <form method="POST" id="save" name="save" action="/reports" enctype="multipart/form-data">
+                         <input type="hidden" name="id" id="[%id%]" >
+                         <input type="hidden" name="rep_save" value="1">
+                         <p class='input'><br />
+                           <span class='width50'>
+                              Наименование отчета:  <br />
+                             <textarea name="name"  cols="45" rows="10">[%name%] </textarea>
+                         </span>
+                         </p>
+                         <p class='input'><br />
+                           <span class='width50'>
+                              Файл:  <br />
+                            [%file/{
+                                   [%href%]
+                                   <br clear="all" /> Удалить <input name="d_file" type="checkbox" value="1"><br />Или заменить на:<br />
+                            }%]
+                            </span>
+                         </p>
+                            <input type="file" name="file" size="20"  onchange="fileIsDoc(this);" /><br />
+                         </div>
+
+                         <div class="vhod">
+                            <div class="but">  <a href='#' class='greenButtom'  onclick="form_submit('[%id%]','id','save')">Сохранить</a></div>
+                            <div class="but"> <a href='/reports' class='greenButtom' >Отмена</a> </div>
+                         </div>
+                       </form>
+               </div>
+               }%]
+             }
+             mode_new {
+                   <div id="new_rep" >
+                   <table width="100%">
+                    <tr >
+                      <td >
+                       <form method="POST" id="save" name="save[%id%]" action="/reports" enctype="multipart/form-data">
+                         <input type="hidden" name="new_rep_submit" value="1">
+                         <p class='input'><br />
+                           <span class='width50'>
+                              Наименование отчета:  <br />
+                              <textarea name="name"  cols="45" rows="10"></textarea>
+                           </span>
+                         </p>
+                         <p class='input'><br />
+                           <span class='width50'>
+                            Файл отчета:  <br />
+                            <input type="file" name="file" size="20"  onchange="fileIsDoc(this);" /><br />
+                         </span>
+                         </p>
+
+                         <div class="vhod">
+                            <div class="but">  <a href='#' class='greenButtom' id="gb_edit[%id%]" onclick="form_submit('[%id%]','id','save')">Сохранить</a></div>
+                            <div class="but"> <a href='/reports' class='greenButtom' >Отмена</a> </div>
+                         </div>
+                       </form>
+                      </td>
+                    </tr>
+                </table>
+               </div>
+             }
+             mode_edit {
+
+                <div class="but"><a href="#" onclick="form_submit('1','new_rep','new');">+Добавить отчет</a> </div>
+
+               <form method="POST" name="new" id="new" action="/reports">
+                  <input type="hidden" name="new_rep" value="1">
+              </form>
+
+              <form method="POST" name="del" id="del" action="/reports">
+                 <input type="hidden" id="id" name="id" >
+                 <input type="hidden" name="rep_del" value="1">
+              </form>
+
+              <form method="POST" name="edit" id="edit" action="/reports">
+                 <input type="hidden" id="id" name="id" >
+                 <input type="hidden" name="rep_edit" value="1">
+              </form>
+
+                <div id="drep" class="drep">
+                   <table width="100%" cellspacing=0 class="tbl">
+                   <tr><th width=80%>Наименование</th><th>Ред.</th><th>Удал.</th></tr>
+                [%./sub/{
+                    <tr >
+                      <td name="g_label[%id%]" id = "g_label[%id%]" >
+                         [%name%]
+                      </td>
+                      <td align="right" id="func[%id%]" >
+                         <input type="button" class="rd_bt" title="редактировать" onclick="form_submit('[%id%]','id','edit')">
+                      </td>
+                      <td align="right" id="func[%id%]" >
+                         <input type="button" class="dl_bt" title="удалить" onclick="form_submit('[%id%]','id','del')">
+                      </td>
+                    </tr>
+                }%]
+                </table>
+               </div>
+
+            }
+
+             mode_show {
+              [%./sub/{
+               <div class="report">
+                   <span name="g_label[%id%]" id = "g_label[%id%]" style="float:left;"> [%name%]  </span>
+                   <span> [%file/{<br><a href="[%href%]"><img src="/i/[%type%].gif" /> ([%type%], [%size%] Кб)</a>}%]</span>
+
+               </div>
+              }%]
+              [%./no_sub/{
+                 На данный момент нет отчетов по данной управляющей организации
+              }%]
+             }
+        %]
+     </div>
+<!-- /about -->

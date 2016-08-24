@@ -1,0 +1,72 @@
+<!-- house PANEL -->
+<script>
+  function ch_house()
+  {
+     var objSel = document.getElementById('house');
+     document.f1.id_house.value = objSel.value;
+     document.f1.change_house.value = "1";
+     document.f1.submit();
+  }
+
+  function del_cookie() {
+     var ws=new Date();
+     ws.setDate(1+ws.getDate());
+     document.cookie="id_house=done; path=/; expires="+ ws.toGMTString();
+  };
+</script>
+
+<script type='text/javascript' src='/_js/cityselect.js'></script>
+
+<form action="/" name="f1" method="post">
+    <input type="hidden" name="id_house"  value="">
+    <input type="hidden" name="change_house"  value="">
+</form>
+
+<div class='wrap'>
+    <div class='head'>
+           <a href='#' class='logo'>[%logo%]</a>
+
+           <div class='date'>Сегодня: <span>[%date%]</span></div>
+    </div>
+</div>
+
+   <div class='topMenu'>
+        <div class='wrap'>
+             <div class='groupselect' >
+                <select name='city' id='city'   >
+                    <option value="0" [%no_city/{selected}%] disabled style="color:gray;">Выберите город</option>
+                    [%sub_city/{
+                    <option value="[%id%]" [%selected%] >[%name%]</option>
+                    }%]
+                </select>
+
+                <select name='street' id='street' >
+                       <option value="0" [%no_street/{selected}%] disabled>Выберите улицу</option>
+                        [%sub_street/{
+                       <option value="[%id%]" [%selected%] >[%name%]</option>
+                       }%]
+                </select>
+
+                <select name='house' id='house' >
+                        <option value="0" [%no_house/{selected}%] disabled>Выберите дом</option>
+                        [%sub_house/{
+                         <option value="[%id%]" [%selected%]>[%number%][%fract%]</option>
+                        }%]
+                 </select>
+              </div>
+          <div class='nameTsj'>
+               <a href="#" onclick="ch_house();">Показать</a>
+          </div>
+
+          <div class='nameAuth'>
+               <a href='[%./log_link%]' [%./log_id%] [%./log_onclick%]><b>[%./log_name%]</b></a>
+             </div>
+
+
+        </div>
+   </div>
+
+
+
+
+<!-- /house PANEL -->

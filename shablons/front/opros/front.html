@@ -1,0 +1,259 @@
+<!-- opros -->
+ <script>
+
+ function form_submit(id,val_name,formname)  {
+      //alert(id);
+     var elementi = document.getElementsByName(val_name);
+     var length = elementi.length;
+     for (var i = 0; i < length; i++) {
+         elementi[i].value= id;
+     }
+
+     var f = document.forms[formname];
+
+     f.submit();
+ }
+
+ function check_img(id_img,id_form){
+    //alert ('j');
+    $('#'+id_form+' img').attr("src", "/i/chekedNoActive.png");
+    $('#i'+id_img).attr("src", "/i/chekedActive.png");
+    $('#ch'+id_form).attr("value", id_img);
+ };
+
+ function subm(id_form){
+    if ( $('#ch'+id_form).attr('value')>0) $('#f'+id_form).submit();
+ };
+
+ function subm_result(id_form){
+    $('#f'+id_form).submit();
+ };
+ </script>
+        [%mode/?
+             mode_edit_one {
+                 [%./sub/{
+                 <form method="post" action="/opros" name="save" id="save">
+                  <input type="hidden" name="id" value="[%id%]">
+                  <input type="hidden" name="save" value="1">
+                  <input type="hidden" name="id_house" value="[%./id_house%]">
+                  <div class='newsBlock' id = 'div[%id%]'  style="width:447px;"><div class='hvost'></div>
+                        <div class='bodyNews' id="[%id%]">
+                                <td> <p class='input'>Заголовок опроса<br><input name = "zagol" class='w320' value="[%name%]" type='text' /> </p> </td>
+
+                               <table width=100%>
+                                  [%sub1/{
+                                        <tr>
+                                            <td> <p class='input'>Вариант ответа<br><input name = "_otvet[%id%]" class='w320' value="[%name%]" type='text' /> </p> </td>
+                                        </tr>
+                                   }%]
+                                   <tr>
+                                       <td> <p class='input'>Вариант ответа<br><input name = "new[]" class='w320' type='text' /> </p> </td>
+                                   </tr>
+                                   <tr>
+                                       <td> <p class='input'>Вариант ответа<br><input name = "new[]" class='w320' type='text' /> </p> </td>
+                                   </tr>
+                                   <tr>
+                                       <td> <p class='input'>Вариант ответа<br><input name = "new[]" class='w320' type='text' /> </p> </td>
+                                   </tr>
+
+                                </table>
+                        </div>
+                        <p class='linkNews'>
+                                <div class="but">  <a href='#' class='greenButtom' id="gb_edit[%id%]" onclick="form_submit('[%id%]','id','save')">Сохранить</a></div>
+                                <div class="but"> <a href='/opros' class='greenButtom' >Отмена</a> </div>
+                        </p>
+                  </div>
+                   </form>
+                 }%]
+             }
+             mode_new {
+              <form method="post" action="/opros/add/1" name="save" id="save">
+              <input type="hidden" name="new_rep_submit" value="1">
+              <div class='newsBlock' id = 'div[%id%]' style="width:447px;"><div class='hvost'></div>
+                    <div class='bodyNews' id="[%id%]">
+
+                           <table width=100%>
+                                   <tr> <td>Дом:
+                                        <select name='id_house'>
+                                        [%./house/{
+                                              <option value="[%id%]" >[%name%] [%number%] [%fract/{ /[%./fract%] }%]</option>
+                                        }%]
+                                        </select>
+                                        </td>
+                                    </tr>
+                                   <tr>
+                                       <td> <p class='input'>Заголовок опроса<br><input name = "zagol" class='w320'  type='text' /> </p> </td>
+                                   </tr>
+                                   <tr>
+                                        <td> <p class='input'>Вариант ответа<br><input name = "_otvet[]" class='w320' type='text' /> </p> </td>
+                                    </tr>
+                                    <tr>
+                                        <td> <p class='input'>Вариант ответа<br><input name = "_otvet[]" class='w320' type='text' /> </p> </td>
+                                    </tr>
+                                    <tr>
+                                        <td> <p class='input'>Вариант ответа<br><input name = "_otvet[]" class='w320' type='text' /> </p> </td>
+                                    </tr>
+                                    <tr>
+                                        <td> <p class='input'>Вариант ответа<br><input name = "_otvet[]" class='w320' type='text' /> </p> </td>
+                                    </tr>
+                                    <tr>
+                                        <td> <p class='input'>Вариант ответа<br><input name = "_otvet[]" class='w320' type='text' /> </p> </td>
+                                    </tr>
+                            </table>
+                    </div>
+                    <p class='linkNews'>
+                            <div class="but">  <a href='#' class='greenButtom' onclick="form_submit('1','new_rep_submit','save')">Сохранить</a></div>
+                            <div class="but"> <a href='/opros' class='greenButtom' >Отмена</a> </div>
+                    </p>
+              </div>
+              </form>
+             }
+             mode_edit {
+              <div class='centerBlock'>
+                <p class='date'>Опросы и голосования</p><br/>
+                <div class="but"><a href="#" onclick="form_submit('1','new_rep','new');">+Добавить опрос</a> </div>
+
+               <form method="POST" name="new" id="new" action="/opros">
+                  <input type="hidden" name="new_rep" value="1">
+              </form>
+
+              <form method="POST" name="del" id="del" action="/opros">
+                 <input type="hidden" id="id" name="id" >
+                 <input type="hidden" name="rep_del" value="1">
+              </form>
+
+              <form method="POST" name="edit" id="edit" action="/opros">
+                 <input type="hidden" id="id" name="id" >
+                 <input type="hidden" name="rep_edit" value="1">
+              </form>
+
+                <div id="drep" class="drep">
+                   <table width="100%" cellspacing=0 class="tbl">
+                   <tr><th >Дом</th><th>Наименование</th><th>Ред.</th><th>Удал.</th></tr>
+                [%./sub/{
+                    <tr >
+                      <td  >
+                         [%house%]
+                      </td>
+                      <td name="g_label[%id%]">
+                         [%name%]
+                      </td>
+                      <td align="right"  >
+                         <input type="button" class="rd_bt" title="редактировать" onclick="form_submit('[%id%]','id','edit')">
+                      </td>
+                      <td align="right"  >
+                         <input type="button" class="dl_bt" title="удалить" onclick="form_submit('[%id%]','id','del')">
+                      </td>
+                    </tr>
+                }%]
+                </table>
+               </div>
+             </div>
+            }
+
+            mode_show {
+             <script>
+
+              function form_submit(id,val_name,formname)  {
+                                    var elementi = document.getElementsByName(val_name);
+                                    var length = elementi.length;
+                                    for (var i = 0; i < length; i++) {
+                                        elementi[i].value= id;
+                                    }
+
+                                    var f = document.forms[formname];
+                                    //alert(el.value);
+                                    f.submit();
+                              }
+
+              function check_img(id_img,id_form){
+                 //alert ('j');
+                 $('#'+id_form+' img').attr("src", "/i/chekedNoActive.png");
+                 $('#i'+id_img).attr("src", "/i/chekedActive.png");
+                 $('#ch'+id_form).attr("value", id_img);
+              };
+
+              function subm(id_form){
+                 if ( $('#ch'+id_form).attr('value')>0) $('#fo'+id_form).submit();
+              };
+
+              function subm_result(id_form){
+                 $('#fo'+id_form).submit();
+              };
+
+              [%./sub/{
+              $(document).ready(function(){
+                 var options = {
+                    target : '#div[%id%]',
+                    beforeSubmit: showRequest, // функция, вызываемая перед передачей
+                    success: showResponse, // функция, вызываемая при получении ответа
+                    timeout: 3000 // тайм-аут
+                 };
+
+
+                 $('#fo[%id%]').submit(function() {
+                    $(this).ajaxSubmit(options);
+                    return false;
+                 });
+
+              });
+              }%]
+                // вызов перед передачей данных
+                 function showRequest(formData, jqForm, options) {
+                    var queryString = $.param(formData);
+                   // alert('Вот что мы передаем: \n\n' + queryString);
+                 }
+
+                 // вызов после получения ответа
+                 function showResponse(responseText, statusText)  {
+                   // hide_form('new_group');
+
+                   //alert('Статус ответа сервера: ' + statusText + '\n\nТекст ответа сервера: \n' + responseText +  '\n\nЦелевой элемент div обновиться этим текстом.');
+                 }
+
+              </script>
+
+            [%./sub/{
+               <div class='newsBlock' id = 'div[%id%]' style ="width:447px"><div class='hvost'></div>
+                      <div class='bodyNews' id="[%id%]">
+                              <p><a href=''>[%name%]</a></p>
+                              <br>
+                              <form method="post" action="/ajax/opros.php" name="fo[%id%]" id="fo[%id%]"v>
+                               <input type="hidden" name="checked"  id="ch[%id%]" value=0>
+                               <input type="hidden" name="formid"  value="[%id%]">
+                              <table width=100%>
+                                [%sub1/{
+                                      <tr>
+                                          <td width="30px;"><img src='/i/chekedNoActive.png' id="i[%id%]" onclick="check_img([%id%],[%./id%])"/></td>
+                                          <td>[%name%]</td>
+                                      </tr>
+                                 }%]
+                                </form>
+                              </table>
+                      </div>
+                      <p class='linkNews'>
+                             <span class='opros1'>
+                                <a href="#" class='voteBg' onclick="subm('[%id%]')"></a>
+                                <a href="#" class='rezBg' onclick="subm_result('[%id%]')"></a>
+
+                            </span>
+
+                      </p>
+                </div>
+           }%]
+           [%./no_sub/{
+             <div class='centerBlock'>
+                <p class='date'>Опросы и голосования</p><br/>
+
+                На данный момент нет опросов и голосований для выбранного дома
+
+             </div>
+           }%]
+          }
+        %]
+
+
+
+
+<!-- /NEWS -->
+

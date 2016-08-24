@@ -1,0 +1,57 @@
+<div class='centerBlock' style="width: 446px; ">
+   <p class='date'>Личный профиль</p><br/>
+   [%message/{
+           <span class="message">
+              [%./message%]
+           </span>
+           <br><br>
+    }%]
+    <form method="POST" name="del_photo" id="del_ph" action="/lk">
+            <input type="hidden" name="del_photo" value="1">
+    </form>
+    <form name='lk' id='lk' action="/lk" method="post" enctype="multipart/form-data">
+
+      <input type='hidden' name='save' value='1'>
+      <p class='input'>Эл. почта <br /> <input class='w320' name='email'  value='[%email%]' type='text' placeholder='Введите E-mail'/> </p>
+      <p class='input'>
+              <span class='width50'>
+                      Пароль:  <br /> <input class='w160' name='pass1' type='password' placeholder='Пароль'/>
+              </span>
+              <span class='width50'>
+                      Повторите пароль:  <br /> <input class='w160' name='pass2' type='password' placeholder='Повторите пароль'/>
+              </span>
+      </p>
+      <p class='input'>Наименование организации <br /> <input class='w320' name='name' value='[%name%]' type='text' placeholder='Наименование организации'/></p>
+      <p class='input'>ИНН организации <br /> <input class='w320' name='inn' value='[%inn%]' type='text' placeholder='ИНН организации'/></p>
+      <p class='input'>Контактное лицо<br /> <input class='w320' name='fio' value='[%fio%]' type='text' placeholder='Контактное лицо'/></p>
+      <p class='input'>Контактный телефон<br /> <input class='w320' name='tel' value='[%tel%]' type='text' placeholder='Контактный телефон'/></p>
+      <p class='input'>Город <br />
+      <select name='city' id='city'  style="width:360px; "  >
+         [%city/{
+          <option value="[%id%]" [%selected%] >[%name%]</option>
+         }%]
+       </select>
+      <p class='input'>Адрес<br /> <input class='w320' name='adress' value='[%adress%]' type='text' placeholder='Адрес'/></p>
+      <p class='input'>Вид деятельности <br />
+      <select name='act_category' id='act_category' style="width:360px;" >
+         [%act_category/{
+          <option value="[%id%]" [%selected%] >[%name%]</option>
+         }%]
+       </select>
+      </p>
+       <p >Логотип:</p><br/>
+
+        [%image1/{
+             <img class="imgSmall"  src="[%src%]"
+                onclick="show_image('[%src%]','Маленькая картинка');" /><br>
+              <a href="#" title="удалить" onclick="submit_forms('del_ph')" class='linkdelBg'></a>
+              <br />Или заменить на:<br />
+        }%]
+      <input type="file" name="image1" size="20" class="textinput" onchange="fileIsImage(this);" /><br />
+      <p class='input'>Адрес сайта<br /> <input class='w320' name='link' value='[%link%]' type='text' placeholder='Адрес'/></p>
+      <p>Описание организации:</p>
+      <textarea name="about" cols="43" rows="10">[%about%]</textarea>
+
+      <p align='center' class='ischo'><a href='#' onclick="submit_forms('lk')" class='greenButtom'>Сохранить</a></p>
+   </form>
+</div>
